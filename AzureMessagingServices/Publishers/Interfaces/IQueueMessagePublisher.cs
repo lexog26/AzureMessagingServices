@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AzureMessagingServices.Publishers.Interfaces
 {
-    public interface IMessagePublisher
+    public interface IQueueMessagePublisher
     {
-        Task PublishMessageAsync<TBody>(Message<TBody> message) where TBody : class;
+        Task PublishMessageAsync<TBody>(QueueMessage<TBody> message) where TBody : class;
     }
 }

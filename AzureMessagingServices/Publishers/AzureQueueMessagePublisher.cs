@@ -11,7 +11,7 @@ namespace AzureMessagingServices.Publishers
     public class AzureQueueMessagePublisher : QueueMessagePublisher
     {
         protected readonly CloudQueueClient QueueClient;
-        public AzureQueueMessagePublisher(QueueSettings queueSettings) : base(queueSettings)
+        public AzureQueueMessagePublisher(PublisherSettings queueSettings) : base(queueSettings)
         {
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(queueSettings.ConnectionString);
             QueueClient = cloudStorageAccount.CreateCloudQueueClient();

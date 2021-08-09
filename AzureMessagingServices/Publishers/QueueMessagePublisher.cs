@@ -8,19 +8,14 @@ using System.Threading.Tasks;
 
 namespace AzureMessagingServices.Publishers
 {
-    public abstract class QueueMessagePublisher : IMessagePublisher
+    public abstract class QueueMessagePublisher : IQueueMessagePublisher
     {
-        public QueueMessagePublisher(QueueSettings queueSettings)
+        public QueueMessagePublisher(PublisherSettings queueSettings)
         {
             Settings = queueSettings;
         }
 
-        public QueueSettings Settings { get; set; }
-
-        public async Task PublishMessageAsync<TBody>(Message<TBody> message) where TBody : class
-        {
-            await PublishMessageAsync(new QueueMessage<TBody> { Body = message.Body, QueueName = Settings.QueueName });
-        }
+        public PublisherSettings Settings { get; set; }
 
         public abstract Task PublishMessageAsync<TBody>(QueueMessage<TBody> queueMessage) where TBody : class;
     }
